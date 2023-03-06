@@ -1,3 +1,4 @@
 # dynamodb_test
 
-![image](https://user-images.githubusercontent.com/120413524/223165295-1e2a0cbd-3864-49cf-b921-bff19b6e7b89.png)
+![image](https://user-images.githubusercontent.com/120413524/223180624-66bc281f-0c17-4212-bbd4-2e9b41218c7f.png)
+
