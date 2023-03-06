@@ -1,6 +1,7 @@
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSortKey
+import java.util.UUID
 
 @DynamoDbBean
 data class UserBasicInformation(
@@ -13,9 +14,16 @@ data class UserBasicInformation(
 )
 
 @DynamoDbBean
+data class UserActivation(
+    @get:DynamoDbPartitionKey var email: String? = null,
+    var activationToken: String? = UUID.randomUUID().toString(),
+    @get:DynamoDbSortKey var sk: String? = "ACTIVATION"
+)
+
+@DynamoDbBean
 data class UserPassword(
     @get:DynamoDbPartitionKey var email: String? = null,
-    var hashed_password: String? = null,
+    var hashedPassword: String? = null,
     @get:DynamoDbSortKey var sk: String? = "PASSWORD"
 )
 

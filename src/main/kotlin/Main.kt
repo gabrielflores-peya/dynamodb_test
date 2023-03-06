@@ -27,6 +27,9 @@ fun main(args: Array<String>) {
         "Principal Eng",
         "PeYa"
     )
+    var activation = UserActivation(
+        "gabriel.flores@pedidosya.com"
+    )
     val password = UserPassword(
         "gabriel.flores@pedidosya.com",
         "my_password"
@@ -56,11 +59,13 @@ fun main(args: Array<String>) {
     )
     val userBasicInformationTable = TableSchema.fromClass(UserBasicInformation::class.java)
     val userPasswordTable = TableSchema.fromClass(UserPassword::class.java)
-    val UserRolTable = TableSchema.fromClass(UserRol::class.java)
+    val userRolTable = TableSchema.fromClass(UserRol::class.java)
+    val userActivationTable = TableSchema.fromClass(UserActivation::class.java)
 
     var tableUserBasicInformation = enhancedClient.table("User", userBasicInformationTable)
     var tableUserPassword = enhancedClient.table("User", userPasswordTable)
-    var tableUserRol = enhancedClient.table("User", UserRolTable)
+    var tableUserRol = enhancedClient.table("User", userRolTable)
+    var tableActivation = enhancedClient.table("User", userActivationTable)
 
     try {
         tableUserBasicInformation.createTable()
@@ -68,6 +73,7 @@ fun main(args: Array<String>) {
 
     }
     tableUserBasicInformation.putItem(user)
+    tableActivation.putItem(activation)
     tableUserPassword.putItem(password)
     tableUserRol.putItem(rol)
     tableUserBasicInformation.putItem(user_juan)
